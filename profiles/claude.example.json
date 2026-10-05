@@ -1,0 +1,19 @@
+{
+  "provider": "claude",
+  "model": "claude-sonnet-5-5",
+  "store_dir": "/tmp/dsh-rs-sessions",
+  "adapters": {
+    "lmstudio": { "base_url": "http://localhost:1234/v1", "api_key": "lm-studio", "model": "google/gemma-4-26b-a4b" }
+  },
+  "plugins": {
+    "claude-code": { "model": "claude-sonnet-5-5" },
+    "observational-memory": {
+      "models": [
+        { "provider": "claude", "model": "claude-haiku-4-5-20251001" },
+        { "provider": "lmstudio", "model": "google/gemma-4-26b-a4b" }
+      ],
+      "message_tokens": 30000,
+      "observation_tokens": 40000
+    }
+  }
+}

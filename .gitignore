@@ -9,3 +9,5 @@ Cargo.lock.orig
 /.cargo-home
 /pi
 /pi.c
+/crates/*/target
+/crates/*/Cargo.lock

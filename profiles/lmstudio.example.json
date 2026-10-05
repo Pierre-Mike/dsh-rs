@@ -1,0 +1,12 @@
+{
+  "provider": "lmstudio",
+  "model": "qwen3.8-27b-mlx",
+  "store_dir": "/tmp/dsh-rs-sessions",
+  "adapters": {
+    "lmstudio": {
+      "base_url": "http://localhost:1234/v1",
+      "api_key": "lm-studio",
+      "model": "qwen3.8-27b-mlx"
+    }
+  }
+}

@@ -36,6 +36,8 @@ pub struct BaseConfig {
     pub default_provider: Option<String>,
     /// Default model id for agents (falls back per provider).
     pub default_model: Option<String>,
+    /// Per-plugin config sections for the local plugins (`src/plugins`).
+    pub plugins: Option<Value>,
 }
 
 impl BaseConfig {
@@ -67,6 +69,9 @@ impl BaseConfig {
         }
         if let Some(model) = value.get("model").and_then(|m| m.as_str()) {
             config.default_model = Some(model.to_string());
+        }
+        if let Some(plugins) = value.get("plugins") {
+            config.plugins = Some(plugins.clone());
         }
         config
     }

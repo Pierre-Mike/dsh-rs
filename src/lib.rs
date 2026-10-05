@@ -26,6 +26,7 @@ pub mod bundle;
 pub mod cli;
 pub mod core;
 pub mod llm;
+pub mod plugins;
 pub mod session;
 pub mod tools;
 pub mod types;

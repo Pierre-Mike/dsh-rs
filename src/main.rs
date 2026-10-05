@@ -312,6 +312,16 @@ async fn boot(
         let handles = dsh_rs::bundle::install_base(&ctx, config.clone()).await?;
         (handles, config)
     };
+    let mut handles = handles;
+    let plugins = config.plugins.clone().unwrap_or(Value::Null);
+    for (plugin, plugin_config) in dsh_rs::plugins::extra_plugins(&plugins) {
+        let handle = ctx.plugin(plugin, plugin_config);
+        handle
+            .join()
+            .await
+            .map_err(|err| format!("plugin {} failed to start: {err}", handle.name()))?;
+        handles.push(handle);
+    }
     Ok((ctx, handles, config))
 }
 
